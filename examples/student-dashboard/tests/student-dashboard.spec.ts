@@ -1,0 +1,92 @@
+import { test, expect } from '@playwright/test'
+import AxeBuilder from '@axe-core/playwright'
+import { students } from '../src/data'
+import { progressSummary } from '../src/report'
+
+test.beforeEach(async ({page}) => { await page.goto('/') })
+test('dashboard and percentages', async ({page}) => {
+  await expect(page.getByRole('heading',{name:'Overview',exact:true})).toBeVisible()
+  const summary = progressSummary(students)
+  await expect(page.locator('.progress-ring')).toContainText(summary.categories[0].percent + '%')
+  for (const c of summary.categories) await expect(page.locator('.progress-card')).toContainText(c.count + ' · ' + c.percent + '%')
+})
+test('search and combined filters', async ({page}) => {
+  const grid = page.getByRole('grid')
+  await page.getByRole('textbox',{name:'Search students'}).fill('Maya')
+  await expect(grid.getByText('Maya Chen')).toBeVisible()
+  await expect(grid.getByText('Amara Wilson')).toHaveCount(0)
+  await page.getByRole('textbox',{name:'Search students'}).fill('')
+  await page.getByRole('combobox',{name:'Grade',exact:true}).click()
+  await page.getByRole('option',{name:'Grade 10'}).click()
+  await expect(grid.getByText('Noah Bennett')).toBeVisible()
+  await page.getByRole('combobox',{name:'Status',exact:true}).click()
+  await page.getByRole('option',{name:'At risk',exact:true}).click()
+  await expect(page.getByText('No students found')).toBeVisible()
+})
+test('sort and paginate', async ({page}) => {
+  await page.setViewportSize({width:1440,height:1000})
+  const header = page.locator('[role="columnheader"][data-field="average"]')
+  await header.click()
+  await expect(header).toHaveAttribute('aria-sort','ascending')
+  await expect(page.locator('.MuiDataGrid-row').first()).toContainText('Elias Rivera')
+  await page.getByRole('button',{name:'Go to next page'}).click()
+  await expect(page.locator('.MuiTablePagination-displayedRows')).toContainText('6–10 of 12')
+})
+test('dialog keyboard focus and close', async ({page}) => {
+  await page.setViewportSize({width:1440,height:1000})
+  const trigger = page.getByRole('button',{name:'View Amara Wilson',exact:true})
+  await trigger.focus()
+  await page.keyboard.press('Enter')
+  const dialog = page.getByRole('dialog')
+  await expect(dialog).toBeVisible()
+  await expect.poll(() => dialog.evaluate(el => el.contains(document.activeElement))).toBe(true)
+  await page.keyboard.press('Escape')
+  await expect(dialog).toBeHidden()
+  await expect(trigger).toBeFocused()
+})
+test('filtered CSV download', async ({page}) => {
+  await page.getByRole('textbox',{name:'Search students'}).fill('Amara')
+  const promise = page.waitForEvent('download')
+  await page.getByRole('button',{name:'Export report'}).click()
+  const download = await promise
+  expect(download.suggestedFilename()).toBe('northstar-students.csv')
+  const stream = await download.createReadStream()
+  const chunks = []
+  for await (const chunk of stream!) chunks.push(chunk)
+  const csv = Buffer.concat(chunks).toString()
+  expect(csv).toContain('Amara Wilson')
+  expect(csv).not.toContain('Noah Bennett')
+})
+test('loading empty error and recovery', async ({page}) => {
+  await page.goto('/?state=loading')
+  await expect(page.getByRole('progressbar')).toBeVisible()
+  await page.goto('/?state=empty')
+  await expect(page.getByText('No students found')).toBeVisible()
+  await page.goto('/?state=error')
+  await expect(page.getByRole('alert')).toContainText('couldn’t load')
+  await page.getByRole('button',{name:'Try again'}).click()
+  await expect(page.getByRole('grid')).toBeVisible()
+})
+test('skip link and mobile navigation', async ({page}) => {
+  await page.keyboard.press('Tab')
+  await expect(page.getByRole('link',{name:'Skip to main content'})).toBeFocused()
+  await page.keyboard.press('Enter')
+  await page.setViewportSize({width:375,height:900})
+  await page.getByRole('button',{name:'Open navigation'}).focus()
+  await page.keyboard.press('Enter')
+  await page.getByRole('button',{name:'Calendar',exact:true}).click()
+  await expect(page.getByRole('heading',{name:'Calendar',exact:true})).toBeVisible()
+  await expect(page.getByText('This navigation destination',{exact:false})).toBeVisible()
+})
+test('responsive overflow axe and screenshots', async ({page},info) => {
+  for (const width of [375,768,1440]) {
+    await page.setViewportSize({width,height:1000})
+    await page.goto('/')
+    await expect(page.getByRole('grid')).toBeVisible()
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    if(width === 1440) expect(await page.locator('.desktop-drawer .MuiDrawer-paper').evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true)
+    const results = await new AxeBuilder({page}).analyze()
+    expect(results.violations.filter(v => ['serious','critical'].includes(v.impact!))).toEqual([])
+    await page.screenshot({path:info.outputPath('dashboard-' + width + '.png'),fullPage:true})
+  }
+})
