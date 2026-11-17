@@ -1,4 +1,4 @@
-# Architecture — v1
+# Architecture — v1.1
 
 ```text
 Codex / compatible agent
@@ -17,4 +17,4 @@ Repository skills and resources are versioned together. `scripts/install.py` ins
 
 Profiles express intent rather than executable configuration. Design tokens model semantic roles with the DTCG 2025.10 JSON shape, but application-specific CSS/React Native/Flutter generators and complete DTCG certification are out of scope in v1.
 
-Do not rely on the agent automatically activating every skill. Measure selection quality using `docs/evaluation-plan.md`. Native Codex and VS Code Copilot have different project skill lookup defaults; see README.
+The installer is a file-level merge: it skips identical files, preflights conflicts, and never recursively deletes target content. Explicit replacements are backed up. `scripts/doctor.py` reuses the validator to report source or target health. Do not rely on the agent automatically activating every skill. Measure selection quality using `docs/evaluations/v1.1.0-test-plan.md`. Native Codex and VS Code Copilot have different project skill lookup defaults; see README.
