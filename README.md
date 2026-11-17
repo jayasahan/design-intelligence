@@ -1,4 +1,4 @@
-# Design Intelligence v1.1.0
+# Design Intelligence v1.2.0
 
 Portable **Agent Skills + research reference library + design profiles** for frontend coding agents.
 
@@ -14,6 +14,7 @@ Portable **Agent Skills + research reference library + design profiles** for fro
 - A cross-project installer and offline structural validator
 - A safe installer, diagnostics CLI, and reproducible evaluation plan
 - Unit tests and GitHub Actions validation
+- A local React student-management playground with browser, responsive, screenshot, and axe-based evaluation coverage
 
 ## Quick start: the repository itself (Windows / VS Code + Codex)
 
@@ -105,6 +106,19 @@ Agent Skills are discoverable, reusable workflows in `.agents/skills/<name>/SKIL
 ## Tests
 
 Install development dependencies, then run `py scripts/validate.py`, `py -m unittest discover -s tests -v`, and `py scripts/doctor.py`. If `py` does not resolve to Python 3.10+, use an explicit Python 3 executable. Tests use temporary directories and do not access the network.
+
+### Student dashboard playground
+
+The isolated example in [`examples/student-dashboard/`](examples/student-dashboard/) is a React + TypeScript + Vite application using MUI Core and MUI X Data Grid Community. It has its own package manifest and lockfile, and does not turn the repository root into a frontend application.
+
+```powershell
+cd examples/student-dashboard
+npm install
+npx playwright install chromium
+npm run dev
+```
+
+For verification, run `npm run typecheck`, `npm run build`, and `npm test`. The v1.2.0 implementation and evidence log live in [`docs/evaluations/v1.2.0-playground-report.md`](docs/evaluations/v1.2.0-playground-report.md).
 
 ## License
 

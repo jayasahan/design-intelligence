@@ -1,0 +1,38 @@
+name: Verify student dashboard
+permissions:
+  contents: read
+on:
+  push:
+  pull_request:
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: examples/student-dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: examples/student-dashboard/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:unit
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - name: Audit dependencies (includes development tooling)
+        if: success() || failure()
+        run: npm audit --audit-level=moderate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playground-browser-evidence
+          path: |
+            examples/student-dashboard/playwright-report/
+            examples/student-dashboard/test-results/
+            examples/student-dashboard/dist/bundle-report.json
+          retention-days: 14
