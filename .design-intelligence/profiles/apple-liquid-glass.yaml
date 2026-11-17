@@ -1,0 +1,23 @@
+schema_version: 1
+project:
+  name: premium-apple-inspired-site
+  platforms: [web]
+  framework: react
+design:
+  direction: apple-inspired-liquid-glass
+  principles: [legibility, depth, restraint]
+  tokens_file: .design-intelligence/tokens/apple-liquid-glass.tokens.json
+implementation:
+  styling: tailwind-css-or-existing
+  components: headless-primitives-or-existing
+  animation: motion-if-needed
+  three_d: false
+quality:
+  accessibility: WCAG-2.2-AA
+  reduced_motion: respect-system
+  responsive_testing: true
+  visual_testing: true
+constraints:
+  - Glass belongs primarily on navigation and controls, not all content
+  - Do not claim native Apple implementation on web
+  - Always provide legible fallback surfaces

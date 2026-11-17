@@ -1,0 +1,155 @@
+{
+  "$description": "Illustrative Design Intelligence material-enterprise sample. Validate real surface contrast and brand fit before production.",
+  "color": {
+    "background": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.968627,
+          0.976471,
+          0.988235
+        ],
+        "hex": "#F7F9FC"
+      }
+    },
+    "surface": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "hex": "#FFFFFF"
+      }
+    },
+    "text": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.090196,
+          0.12549,
+          0.2
+        ],
+        "hex": "#172033"
+      }
+    },
+    "muted": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.321569,
+          0.376471,
+          0.454902
+        ],
+        "hex": "#526074"
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.113725,
+          0.305882,
+          0.847059
+        ],
+        "hex": "#1D4ED8"
+      }
+    },
+    "focus": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.113725,
+          0.305882,
+          0.847059
+        ],
+        "hex": "#1D4ED8"
+      }
+    }
+  },
+  "space": {
+    "xs": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      }
+    }
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    }
+  },
+  "typography": {
+    "body": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    }
+  }
+}

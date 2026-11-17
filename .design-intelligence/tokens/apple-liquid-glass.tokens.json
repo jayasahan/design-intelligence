@@ -1,0 +1,155 @@
+{
+  "$description": "Illustrative Design Intelligence apple-liquid-glass sample. Validate real surface contrast and brand fit before production.",
+  "color": {
+    "background": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.043137,
+          0.070588,
+          0.12549
+        ],
+        "hex": "#0B1220"
+      }
+    },
+    "surface": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.094118,
+          0.137255,
+          0.203922
+        ],
+        "hex": "#182334"
+      }
+    },
+    "text": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.972549,
+          0.980392,
+          0.988235
+        ],
+        "hex": "#F8FAFC"
+      }
+    },
+    "muted": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.831373,
+          0.870588,
+          0.92549
+        ],
+        "hex": "#D4DEEC"
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.454902,
+          0.752941,
+          0.988235
+        ],
+        "hex": "#74C0FC"
+      }
+    },
+    "focus": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.784314,
+          0.341176
+        ],
+        "hex": "#FFC857"
+      }
+    }
+  },
+  "space": {
+    "xs": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      }
+    }
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    }
+  },
+  "typography": {
+    "body": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    }
+  }
+}

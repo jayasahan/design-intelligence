@@ -1,0 +1,155 @@
+{
+  "$description": "Illustrative Design Intelligence neo-brutalist-neon sample. Validate real surface contrast and brand fit before production.",
+  "color": {
+    "background": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.035294,
+          0.043137,
+          0.066667
+        ],
+        "hex": "#090B11"
+      }
+    },
+    "surface": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.090196,
+          0.098039,
+          0.145098
+        ],
+        "hex": "#171925"
+      }
+    },
+    "text": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.968627,
+          0.980392,
+          1.0
+        ],
+        "hex": "#F7FAFF"
+      }
+    },
+    "muted": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.796078,
+          0.835294,
+          0.882353
+        ],
+        "hex": "#CBD5E1"
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.160784,
+          0.905882,
+          0.94902
+        ],
+        "hex": "#29E7F2"
+      }
+    },
+    "focus": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.976471,
+          0.937255,
+          0.388235
+        ],
+        "hex": "#F9EF63"
+      }
+    }
+  },
+  "space": {
+    "xs": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      }
+    }
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    }
+  },
+  "typography": {
+    "body": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    }
+  }
+}

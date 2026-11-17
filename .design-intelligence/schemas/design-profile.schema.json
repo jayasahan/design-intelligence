@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jayasahan/design-intelligence/blob/main/.design-intelligence/schemas/design-profile.schema.json",
+  "$comment": "Profile preferences guide agent decisions; this does not validate rendered UX.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project",
+    "design",
+    "implementation",
+    "quality",
+    "constraints"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "name",
+        "platforms",
+        "framework"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "platforms": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "web",
+              "ios",
+              "android",
+              "desktop"
+            ]
+          }
+        },
+        "framework": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "design": {
+      "type": "object",
+      "required": [
+        "direction",
+        "principles",
+        "tokens_file"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "principles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tokens_file": {
+          "type": "string",
+          "pattern": "^\\.design-intelligence/tokens/[a-z0-9-]+\\.tokens\\.json$"
+        }
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "required": [
+        "styling",
+        "components",
+        "animation",
+        "three_d"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "styling": {
+          "type": "string",
+          "minLength": 1
+        },
+        "components": {
+          "type": "string",
+          "minLength": 1
+        },
+        "animation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "three_d": {
+          "type": "boolean"
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "accessibility",
+        "reduced_motion",
+        "responsive_testing",
+        "visual_testing"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "accessibility": {
+          "enum": [
+            "WCAG-2.2-AA",
+            "WCAG-2.2-AAA",
+            "platform-guidelines-plus-WCAG-2.2-AA"
+          ]
+        },
+        "reduced_motion": {
+          "enum": [
+            "respect-system",
+            "disable-nonessential"
+          ]
+        },
+        "responsive_testing": {
+          "type": "boolean"
+        },
+        "visual_testing": {
+          "type": "boolean"
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

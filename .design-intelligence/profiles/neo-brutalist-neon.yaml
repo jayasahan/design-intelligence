@@ -1,0 +1,23 @@
+schema_version: 1
+project:
+  name: expressive-product-site
+  platforms: [web]
+  framework: react
+design:
+  direction: neobrutalism-with-neon-accents
+  principles: [high-contrast, geometric-hierarchy, playful-feedback]
+  tokens_file: .design-intelligence/tokens/neo-brutalist-neon.tokens.json
+implementation:
+  styling: tailwind-css-or-existing
+  components: customizable-headless-or-existing
+  animation: css-or-motion
+  three_d: false
+quality:
+  accessibility: WCAG-2.2-AA
+  reduced_motion: respect-system
+  responsive_testing: true
+  visual_testing: true
+constraints:
+  - Neon is an accent and not a substitute for readable text
+  - Use thick borders and hard shadows consistently
+  - 3D only when a real product need justifies it

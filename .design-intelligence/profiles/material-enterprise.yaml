@@ -1,0 +1,23 @@
+schema_version: 1
+project:
+  name: internal-business-dashboard
+  platforms: [web]
+  framework: react
+design:
+  direction: material-influenced-enterprise
+  principles: [clarity, predictability, data-density]
+  tokens_file: .design-intelligence/tokens/material-enterprise.tokens.json
+implementation:
+  styling: existing-or-library-theme
+  components: mui-or-mantine-after-comparison
+  animation: css
+  three_d: false
+quality:
+  accessibility: WCAG-2.2-AA
+  reduced_motion: respect-system
+  responsive_testing: true
+  visual_testing: true
+constraints:
+  - Respect existing app architecture and component APIs
+  - Ensure keyboard-accessible tables and complex forms
+  - Evaluate library versions before selecting Material 3 features
